@@ -9,9 +9,10 @@ import (
 const boardSize = 3
 
 type Board struct {
-	board  [boardSize][boardSize]string
-	cursor [2]int
-	player string
+	board         [boardSize][boardSize]string
+	cursor        [2]int
+	player        string
+	gameCompleted bool
 }
 
 func initialBoard() Board {
@@ -28,7 +29,7 @@ func (m Board) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
 		switch msg.String() {
-		case "ctrl+c", "q":
+		case "ctrl+c", "q", "Q":
 			return m, tea.Quit
 		case "up", "k":
 			if m.cursor[0] > 0 {
@@ -49,6 +50,10 @@ func (m Board) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "enter":
 			if m.board[m.cursor[0]][m.cursor[1]] == "" {
 				m.board[m.cursor[0]][m.cursor[1]] = m.player
+				if checkWinner(m.board) {
+					m.gameCompleted = true
+					return m, nil
+				}
 				m.player = switchPlayer(m.player)
 			}
 		}
@@ -56,7 +61,18 @@ func (m Board) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return m, nil
 }
 
-func (m Board) View() string { return renderBoard(m) + "\n" }
+func (m Board) View() string {
+	v := "'s Turn"
+
+	if m.gameCompleted {
+		v = " Won the game"
+	}
+
+	s := renderBoard(m) + "\n" + m.player + v + "\n\n" +
+		`Press Q to exit`
+
+	return s
+}
 
 func New() error {
 	p := tea.NewProgram(initialBoard())
