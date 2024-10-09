@@ -1,5 +1,5 @@
 /*
-Copyright © 2024 NAME HERE abdullahnettoor@gmail.com
+Copyright © 2024 Abdullah Nettoor abdullahnettoor@gmail.com
 */
 package cmd
 
@@ -15,7 +15,7 @@ var rootCmd = &cobra.Command{
 	Long: `Dev friendly TicTacToe
  _______    ______        ______
 /_  __(_)__/_  __/__ ____/_  __/__  ___
- / / / / __// / / _ `+"`"+`/ __// / / _ \/ -_)
+ / / / / __// / / _ ` + "`" + `/ __// / / _ \/ -_)
 /_/ /_/\__//_/  \_,_/\__//_/  \___/\__/
 
 This game is mainly focused developers as users.
