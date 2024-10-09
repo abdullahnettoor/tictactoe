@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/charmbracelet/lipgloss"
 )
 
 const boardSize = 3
@@ -68,10 +69,13 @@ func (m Board) View() string {
 		v = " Won the game"
 	}
 
-	s := renderBoard(m) + "\n" + m.player + v + "\n\n" +
-		`Press Q to exit`
+	s := m.player + v
 
-	return s
+	return lipgloss.JoinVertical(lipgloss.Center,
+		renderBoard(m), "\n",
+		footerStyle.Render(s),
+		"\n\nPress Q to exit",
+	)
 }
 
 func New() error {

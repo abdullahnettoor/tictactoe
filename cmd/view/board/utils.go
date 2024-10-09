@@ -3,11 +3,12 @@ package board
 import "github.com/charmbracelet/lipgloss"
 
 var (
-	xStyle      = lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("205"))                                   // Magenta
-	oStyle      = lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("39"))                                    // Cyan
-	cursorStyle = lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("231")).Background(lipgloss.Color("240")) // Highlighted cell
-	emptyStyle  = lipgloss.NewStyle().Foreground(lipgloss.Color("240"))                                              // Grey for empty cells
-	boardStyle  = lipgloss.NewStyle().Border(lipgloss.DoubleBorder()).Padding(1, 3)                                  // Simple border for the whole board
+	xStyle      = lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("205"))                                              // Magenta
+	oStyle      = lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("39"))                                               // Cyan
+	cursorStyle = lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("231")).Background(lipgloss.Color("240"))            // Highlighted cell
+	emptyStyle  = lipgloss.NewStyle().Foreground(lipgloss.Color("240"))                                                         // Grey for empty cells
+	footerStyle = lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("0")).Background(lipgloss.Color("35")).Padding(0, 2) // Footer
+	boardStyle  = lipgloss.NewStyle().Border(lipgloss.DoubleBorder()).Padding(1, 3)                                             // Simple border for the whole board
 )
 
 func switchPlayer(player string) string {
