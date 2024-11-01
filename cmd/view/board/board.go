@@ -86,3 +86,13 @@ func New() error {
 	}
 	return nil
 }
+
+// TODO
+func NewWithComputer() error {
+	return fmt.Errorf("computer mode not implemented yet")
+}
+
+// TODO
+func NewOnline() error {
+	return fmt.Errorf("online mode not implemented yet")
+}

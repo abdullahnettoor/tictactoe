@@ -6,7 +6,7 @@ package cmd
 import (
 	"log"
 
-	"github.com/abdullahnettoor/tictactoe/cmd/view/board"
+	"github.com/abdullahnettoor/tictactoe/cmd/view/menu"
 	"github.com/spf13/cobra"
 )
 
@@ -16,12 +16,20 @@ var newCmd = &cobra.Command{
 	Short: "Start a new game",
 	Long: `Start a new game of tictactoe.
 
-The game can be played by two players in the same terminal window.
+You can choose between different game modes:
+- Offline (2 Players on same terminal)
+- Play against Computer
+- Play Online with other players
 	`,
 	Run: func(cmd *cobra.Command, args []string) {
-		err := board.New()
+		mode, err := menu.StartMenu()
 		if err != nil {
-			log.Panicf("Error occured: %v", err.Error())
+			log.Panicf("Error occurred: %v", err.Error())
+		}
+
+		err = menu.StartGame(mode)
+		if err != nil {
+			log.Panicf("Error occurred: %v", err.Error())
 		}
 	},
 }
