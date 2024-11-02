@@ -103,13 +103,22 @@ func StartMenu() (GameMode, error) {
 }
 
 func StartGame(mode GameMode) error {
+	var gameMode string
+	var isComputer bool
+
 	switch mode {
 	case LocalMultiplayer:
-		return board.New()
+		gameMode = "Local Multiplayer"
+		isComputer = false
 	case LocalComputer:
-		return board.NewWithComputer()
+		gameMode = "Playing Against Computer"
+		isComputer = true
 	case OnlineMultiplayer:
-		return board.NewOnline()
+		gameMode = "Online Multiplayer"
+		isComputer = false
 	}
-	return nil
+
+	p := tea.NewProgram(board.NewBoard(isComputer, gameMode))
+	_, err := p.Run()
+	return err
 }
