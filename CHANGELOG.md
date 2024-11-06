@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2024-11-06
+
+### Added
+- Menu interface for game mode selection
+- Unbeatable AI opponent using minimax algorithm
+- Play again feature
+- Vim-style navigation
+- Multiple game modes (Human vs Human, Human vs Computer)
+- Colorful terminal UI with borders
+- Game state messages and instructions
+
+### Changed
+- Improved game completion messages
+- Enhanced menu interface with highlighting
+- Better game mode titles
+- Cleaner project structure
+
 ## [0.2.0] - 2024-11-06
 
 ### Added

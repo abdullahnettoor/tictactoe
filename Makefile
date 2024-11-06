@@ -3,7 +3,7 @@ BINARY_NAME=tictactoe
 GO=go
 BUILD_DIR=build
 MAIN_FILE=main.go
-VERSION=v0.2.0
+VERSION=v1.0.0
 LDFLAGS=-ldflags "-X github.com/abdullahnettoor/tictactoe/cmd.Version=${VERSION}"
 
 # Colors for terminal output

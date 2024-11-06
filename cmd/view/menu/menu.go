@@ -27,12 +27,13 @@ var (
 			MarginLeft(2)
 
 	itemStyle = lipgloss.NewStyle().
-			PaddingLeft(4)
+			PaddingLeft(2)
 
 	selectedItemStyle = lipgloss.NewStyle().
 				PaddingLeft(2).
 				Foreground(lipgloss.Color("205")).
-				SetString("❯ ")
+				Background(lipgloss.Color("55")).
+				Bold(true)
 )
 
 func initialModel() model {
@@ -56,34 +57,45 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "ctrl+c", "q":
 			return m, tea.Quit
 		case "up", "k":
-			if m.cursor > 0 {
-				m.cursor--
+			m.cursor--
+			if m.cursor < 0 {
+				m.cursor = len(m.options) - 2
 			}
 		case "down", "j":
-			if m.cursor < len(m.options)-1 {
-				m.cursor++
+			m.cursor++
+			if m.cursor > len(m.options)-2 {
+				m.cursor = 0
 			}
 		case "enter":
-			m.selected = true
-			return m, tea.Quit
+			if m.cursor < len(m.options)-1 {
+				m.selected = true
+				return m, tea.Quit
+			}
 		}
 	}
 	return m, nil
 }
 
 func (m model) View() string {
-	s := titleStyle.Render("Select Game Mode") + "\n\n"
+	s := titleStyle.Render("Select Game Mode")
+	s += "\n\n"
 
 	for i, option := range m.options {
+		var renderedOption string
 		if m.cursor == i {
-			s += selectedItemStyle.Render(option)
+			renderedOption = selectedItemStyle.Render("❯ " + option)
 		} else {
-			s += itemStyle.Render(option)
+			renderedOption = itemStyle.Render("  " + option)
 		}
-		s += "\n"
+
+		if i == int(OnlineMultiplayer) {
+			s += renderedOption + " (Coming Soon!)\n"
+			continue
+		}
+
+		s += renderedOption + "\n"
 	}
 
-	s += "\n" + itemStyle.Render("(Press q to quit)")
 	return s
 }
 

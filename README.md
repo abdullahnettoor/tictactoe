@@ -12,6 +12,7 @@
 <div align="center">
 
 [![Go Version](https://img.shields.io/badge/Go-1.21.7+-00ADD8?style=flat-square&logo=go)](https://golang.org)
+[![Version](https://img.shields.io/badge/Version-1.0.0-blue.svg?style=flat-square)](https://github.com/abdullahnettoor/tictactoe/releases)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
@@ -20,10 +21,12 @@
 ## ✨ Features
 
 - 🎯 Play TicTacToe directly in your terminal
+- 🤖 Challenge the unbeatable AI opponent
 - ⌨️ Vim-style navigation (h,j,k,l) or arrow keys
 - 🎨 Colorful interface with intuitive controls
-- 👥 Two-player gameplay on the same terminal
+- 👥 Multiple game modes (vs Human, vs Computer)
 - 🎭 Simple and clean UI with borders and highlighting
+- 🔄 Play again feature after game completion
 
 ## 🚀 Installation
 
@@ -31,7 +34,7 @@
 2. Install the game using:
 
 ```bash
-go install github.com/abdullahnettoor/tictactoe@latest
+go install github.com/abdullahnettoor/tictactoe@v1.0.0
 ```
 
 ## 🎮 How to Play
@@ -41,13 +44,21 @@ go install github.com/abdullahnettoor/tictactoe@latest
 tictactoe new
 ```
 
-2. Controls:
+2. Select game mode:
+   - 👥 Local Multiplayer (2 Players)
+   - 🤖 Local Computer (vs AI)
+   - 🌐 Online Multiplayer (Coming soon!)
+
+3. Controls:
    - 🕹️ Move: Arrow keys or Vim keys (h,j,k,l)
    - ✅ Place mark: Enter
-   - ❌ Quit game: q or Ctrl+C
+   - 🔄 Play again: P
+   - ❌ Quit game: Q or Ctrl+C
 
-3. Players take turns placing their marks (X and O)
-4. First player to get three in a row (horizontal, vertical, or diagonal) wins! 🏆
+4. Game Rules:
+   - Players take turns placing their marks (X and O)
+   - First player to get three in a row wins!
+   - In Computer mode, try to beat the AI (if you can! 😉)
 
 ## 💻 Development
 
@@ -71,9 +82,9 @@ git clone https://github.com/abdullahnettoor/tictactoe.git
 cd tictactoe
 ```
 
-3. Build the project:
+3. Build and run:
 ```bash
-go build
+make run
 ```
 
 ## 📁 Project Structure
@@ -84,9 +95,12 @@ go build
 ├── 📂 cmd/
 │   ├── 📄 root.go         # Root command configuration
 │   ├── 📄 new.go          # New game command handler
-│   └── 📂 view/board/     # Game board implementation
-│       ├── 📄 board.go    # Core game logic and UI
-│       └── 📄 utils.go    # Helper functions and styling
+│   └── 📂 view/
+│       ├── 📂 board/      # Game board implementation
+│       │   ├── 📄 board.go # Core game logic and UI
+│       │   ├── 📄 ai.go   # AI player implementation
+│       │   └── 📄 utils.go # Helper functions and styling
+│       └── 📂 menu/       # Game mode selection menu
 └── 📄 go.mod              # Go module file
 ```
 
@@ -96,5 +110,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👤 Author
 
-Made with ❤️ by [Abdullah Nettoor](https://github.com/abdullahnettoor) 
+Made with ❤️ by [Abdullah Nettoor](https://github.com/abdullahnettoor)
 

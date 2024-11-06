@@ -11,7 +11,7 @@ import (
 
 var (
 	// Version holds the current version of the application
-	Version = "v0.1.0"
+	Version = "v1.0.0"
 )
 
 // versionCmd represents the version command

@@ -82,4 +82,5 @@ jobs:
           build/tictactoe-linux-amd64
           build/tictactoe-darwin-amd64
           build/tictactoe-windows-amd64.exe
-        generate_release_notes: true
+        body_path: CHANGELOG.md
+        generate_release_notes: false
